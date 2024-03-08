@@ -26,15 +26,27 @@ public class Druide {
 	private String prendreParole() { 
 		return "Le druide " + nom + " : "; 
 	} 
-	
-	public void preparePotion(Random random) {
-		Random random1 = new Random();
-		forcePotion = random1.nextInt(effetPotionMax);
+		
+	public void preparePotion() {
+		Random random = new Random();
+		forcePotion = random.nextInt(effetPotionMax-effetPotionMin+1)+effetPotionMin;
 		if (forcePotion > 7) {
-			Druid.parler("j'ai préparé une super potion de force");
+			System.out.println("j'ai prÃ©parÃ© une super potion de force" + forcePotion);
 		}
 		else {
-			Druid.parler("je n'ai pas trouvé tous les ingrédients, ma potion est seulement de force forcePotion");
+			System.out.println("je n'ai pas trouvï¿½ tous les ingrï¿½dients, ma potion est seulement de force forcePotion" + forcePotion);
 		}
+	}
+	
+	public int getForcePotion() {
+        return forcePotion;
+	}
+	
+	public static void main(String[] args) { 
+		Druide panoramix;
+		panoramix = new Druide("Panoramix", 5, 10);
+		System.out.println(panoramix);
+		panoramix.preparePotion();
+	
 	}
 }

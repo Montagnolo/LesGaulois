@@ -23,24 +23,34 @@ public class Gaulois {
 	}
 	
 	public void frapper(Romain romain) { 
+		int forceCoup = this.force / 3 * this.effetPotion;
 		System.out.println(nom + " envoie un grand coup dans la m�choire de " + romain.getNom()); 
-		romain.recevoirCoup(force / 3);
+		romain.recevoirCoup(forceCoup);
 	}
-
  
 	public String toString() { 
 		return "Gaulois [nom=" + nom + ", force=" + force + ", effetPotion=" + effetPotion + "]"; 
 	}
-
+	
+	public void boirePotion(Druide druide) {
+		druide.preparePotion();
+		int forcePotion = druide.getForcePotion();
+		this.effetPotion = forcePotion;
+		parler("Merci Druide, je sens que ma force est " + this.effetPotion + " fois décuplée");
+	}
+	
 	public static void main(String[] args) { 
 		Gaulois asterix;
-		asterix = new Gaulois("Ast�rix", 8);
+		asterix = new Gaulois("Astérix", 8);
 		System.out.println(asterix);
 		
-		asterix.parler("salut tout le monde");
+		Druide panoramix = new Druide("Panoramix", 5, 10);
+		asterix.boirePotion(panoramix);
+		
 		Romain romulus;
 		romulus = new Romain("actorius",5);
 		asterix.frapper(romulus);
+		
 		
 	}
 }

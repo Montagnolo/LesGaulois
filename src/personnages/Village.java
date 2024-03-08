@@ -28,9 +28,4 @@ public class Village {
 		return nom; 
 	}
 	
-	public static void main(String[] args) { 
-		Village village;
-		village = new Village("Village des Irréductibles",30);
-		Gaulois gaulois = village.trouverHabitant(30);
-	}
 }
